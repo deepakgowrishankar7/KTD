@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>KTD Dropshipping — Fast. Safe. Eco-Friendly.</title>
+    <meta name="description" content="KTD Dropshipping — lightning-fast delivery, easy replacements, and eco-friendly packaging." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CDN for rapid prototyping -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Swiper for carousels -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body class="font-inter bg-white text-gray-800 antialiased">
+
+    <!-- Top Navigation -->
+    <header id="site-header" class="fixed w-full z-40 transition-all duration-300 bg-white/60 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center gap-4">
+            <a href="#" class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-md bg-teal-500 flex items-center justify-center text-white font-bold">KTD</div>
+              <div class="hidden sm:block">
+                <span class="font-semibold text-lg">KTD Dropshipping</span>
+                <div class="text-xs text-gray-500">Fast. Safe. Eco-Friendly.</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="flex-1 mx-4">
+            <div class="relative max-w-xl mx-auto">
+              <input id="search" type="search" placeholder="Search products, categories..." class="w-full border border-gray-200 rounded-full py-2 pl-4 pr-10 shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300 transition" />
+              <div id="autocomplete" class="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg overflow-hidden hidden"></div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a href="login.html" id="loginBtn" class="hidden sm:inline px-3 py-1 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Login</a>
+            <a href="signup.html" id="signupBtn" class="hidden sm:inline px-3 py-1 rounded-md text-sm font-medium bg-teal-500 text-white hover:brightness-95 transition">Sign up</a>
+
+            <a href="cart.html" id="cartBtn" class="relative p-2 rounded-md hover:bg-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 6h12l-2-6M9 21a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2z" />
+              </svg>
+              <span id="cartCount" class="absolute -top-1 -right-1 bg-teal-600 text-white text-xs px-1.5 rounded-full">0</span>
+            </a>
+
+            <button id="mobileMenuBtn" class="sm:hidden p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile menu (visible on small screens) -->
+    <div id="mobileMenu" class="sm:hidden hidden bg-white shadow-md">
+      <div class="px-4 py-3 space-y-2">
+        <a href="login.html" class="block px-3 py-2 rounded text-gray-700">Login</a>
+        <a href="signup.html" class="block px-3 py-2 rounded bg-teal-600 text-white">Sign up</a>
+        <a href="#cart" class="block px-3 py-2 rounded text-gray-700">Cart</a>
+        <a href="#categories" class="block px-3 py-2 rounded text-gray-700">Categories</a>
+      </div>
+    </div>
+
+    <main class="pt-20">
+
+      <!-- Hero -->
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-teal-50 to-white/0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center py-20">
+            <div class="space-y-6" data-aos="fade-right">
+              <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900">
+                <span class="block">Fast. Safe. Eco-Friendly.</span>
+                <span class="block text-teal-600 animate-hero">Delivered to Your Door.</span>
+              </h1>
+              <p class="text-lg text-gray-600 max-w-xl">KTD Dropshipping makes shopping a comfort-first experience — lightning-fast delivery, easy replacements, and planet-friendly packaging.</p>
+              <div class="flex items-center gap-4">
+                <a href="search.html?q=all" class="inline-flex items-center px-6 py-3 bg-teal-600 text-white rounded-full font-semibold shadow hover:scale-105 transform transition hover:shadow-lg">Start Shopping</a>
+                <a href="#delivery" class="text-sm text-gray-700 hover:underline">See delivery promise</a>
+              </div>
+            </div>
+
+            <div class="relative h-72 sm:h-96 rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in">
+              <!-- Video with poster and a JS-driven fallback image for browsers that block or fail the video -->
+              <video id="heroVideo" class="w-full h-full object-cover" poster="assets/images/Free%20Delivery.webp" autoplay muted loop playsinline>
+                <source src="https://cdn.coverr.co/videos/coverr-happy-parcel-delivery-1588?token=eyJhbGciOiJIUzI1NiJ9" type="video/mp4">
+              </video>
+              <!-- Fallback image shown if the video fails to load (hidden by default) -->
+              <img id="heroFallback" src="assets/images/Free%20Delivery.webp" alt="Delivery" class="absolute inset-0 w-full h-full object-contain object-center hidden" />
+              <div class="absolute bottom-4 left-4 bg-white/80 px-3 py-1 rounded-full text-sm font-medium">Free shipping over ₹999</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories -->
+      <section id="categories" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h2 class="text-2xl font-semibold mb-6" data-aos="fade-up">Shop by Category</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+          <!-- Six sample categories -->
+          <a href="#" class="category-card group p-4 bg-white rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition" data-aos="flip-left">
+            <div class="h-20 flex items-center justify-center bg-teal-50 rounded-md mb-3">
+              <img src="/assets/images/Electronics.webp" alt="electronics" class="h-12 object-cover rounded" />
+            </div>
+            <div class="text-sm font-medium">Electronics</div>
+            <div class="text-xs text-gray-500">Gadgets & accessories</div>
+          </a>
+
+          <a href="#" class="category-card group p-4 bg-white rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition" data-aos="flip-left" data-aos-delay="50">
+            <div class="h-20 flex items-center justify-center bg-teal-50 rounded-md mb-3">
+              <img src="/assets/images/home and living conforts.webp" alt="home" class="h-12 object-cover rounded" />
+            </div>
+            <div class="text-sm font-medium">Home & Living</div>
+            <div class="text-xs text-gray-500">Comfort & decor</div>
+          </a>
+
+          <a href="#" class="category-card group p-4 bg-white rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition" data-aos="flip-left" data-aos-delay="100">
+            <div class="h-20 flex items-center justify-center bg-teal-50 rounded-md mb-3">
+              <img src="/assets/images/fashion.webp" alt="fashion" class="h-12 object-cover rounded" />
+            </div>
+            <div class="text-sm font-medium">Fashion</div>
+            <div class="text-xs text-gray-500">Trending styles</div>
+          </a>
+
+          <a href="#" class="category-card group p-4 bg-white rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition" data-aos="flip-left" data-aos-delay="150">
+            <div class="h-20 flex items-center justify-center bg-teal-50 rounded-md mb-3">
+              <img src="/assets/images/Skin Care Wellness.webp" alt="beauty" class="h-24 object-cover rounded" />
+            </div>
+            <div class="text-sm font-medium">Beauty</div>
+            <div class="text-xs text-gray-500">Skincare & wellness</div>
+          </a>
+
+          <a href="#" class="category-card group p-4 bg-white rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition" data-aos="flip-left" data-aos-delay="200">
+            <div class="h-20 flex items-center justify-center bg-teal-50 rounded-md mb-3">
+              <img src="/assets/images/kidstoys.webp" alt="kids" class="h-24 object-cover rounded" />
+            </div>
+            <div class="text-sm font-medium">Kids</div>
+            <div class="text-xs text-gray-500">Toys & essentials</div>
+          </a>
+
+          <a href="#" class="category-card group p-4 bg-white rounded-lg shadow hover:shadow-lg transform hover:-translate-y-1 transition" data-aos="flip-left" data-aos-delay="250">
+            <div class="h-20 flex items-center justify-center bg-teal-50 rounded-md mb-3">
+              <img src="/assets/images/fitness.webp" alt="fitness" class="h-24 object-cover rounded" />
+            </div>
+            <div class="text-sm font-medium">Fitness</div>
+            <div class="text-xs text-gray-500">Gear & accessories</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Products Grid -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-xl font-semibold">Featured Products</h3>
+          <div class="text-sm text-gray-500">Limited time offers inside</div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <!-- sample product card -->
+          <article class="product-card bg-white rounded-lg shadow hover:shadow-xl transform hover:-translate-y-1 transition" data-aos="fade-up">
+            <div class="relative overflow-hidden">
+              <img src="/assets/images/wirelessheadphones.webp" alt="product" class="w-full h-56 md:h-48 lg:h-56 object-contain object-center bg-white group-hover:scale-105 transition duration-500" />
+              <div class="absolute top-3 left-3 bg-yellow-400 text-xs font-semibold px-2 py-1 rounded">Limited</div>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Comfy Wireless Headphones</h4>
+              <div class="flex items-center justify-between mt-2">
+                <div>
+                  <div class="text-teal-600 font-bold">₹2,499</div>
+                  <div class="text-xs text-gray-500">Noise-cancelling • 24h battery</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <button class="quick-view-btn text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-50">Quick View</button>
+                  <button class="add-cart-btn bg-teal-600 text-white text-xs px-3 py-1 rounded-full">Add to cart</button>
+                </div>
+              </div>
+              <div class="mt-3 flex items-center gap-2 text-xs">
+                <span class="px-2 py-1 rounded bg-green-50 text-green-800">✅ Fast Delivery</span>
+                <span class="px-2 py-1 rounded bg-blue-50 text-blue-800">🔁 Easy Replacement</span>
+                <span class="px-2 py-1 rounded bg-gray-100 text-gray-700">♻️ Eco Packaging</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate a few cards for layout demonstration -->
+          <article class="product-card bg-white rounded-lg shadow hover:shadow-xl transform hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="50">
+            <div class="relative overflow-hidden">
+              <img src="/assets/images/smart home camera.webp" alt="product" class="w-full h-56 md:h-48 lg:h-56 object-contain object-center bg-white group-hover:scale-105 transition duration-500" />
+              <div class="absolute top-3 left-3 bg-red-500 text-xs font-semibold px-2 py-1 rounded text-white">-20%</div>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Smart Home Camera</h4>
+              <div class="flex items-center justify-between mt-2">
+                <div>
+                  <div class="text-teal-600 font-bold">₹1,199 <span class="text-sm line-through text-gray-400">₹1,499</span></div>
+                  <div class="text-xs text-gray-500">1080p • Night vision</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <button class="quick-view-btn text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-50">Quick View</button>
+                  <button class="add-cart-btn bg-teal-600 text-white text-xs px-3 py-1 rounded-full">Add to cart</button>
+                </div>
+              </div>
+              <div class="mt-3 flex items-center gap-2 text-xs">
+                <span class="px-2 py-1 rounded bg-green-50 text-green-800">✅ Fast Delivery</span>
+                <span class="px-2 py-1 rounded bg-blue-50 text-blue-800">🔁 Easy Replacement</span>
+                <span class="px-2 py-1 rounded bg-gray-100 text-gray-700">♻️ Eco Packaging</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card bg-white rounded-lg shadow hover:shadow-xl transform hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="100">
+            <div class="relative overflow-hidden">
+              <img src="/assets/images/Ergonomic Travel Pillow.webp" alt="product" class="w-full h-56 md:h-48 lg:h-56 object-contain object-center bg-white group-hover:scale-105 transition duration-500" />
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Ergonomic Travel Pillow</h4>
+              <div class="flex items-center justify-between mt-2">
+                <div>
+                  <div class="text-teal-600 font-bold">₹799</div>
+                  <div class="text-xs text-gray-500">Comfort-first design</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <button class="quick-view-btn text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-50">Quick View</button>
+                  <button class="add-cart-btn bg-teal-600 text-white text-xs px-3 py-1 rounded-full">Add to cart</button>
+                </div>
+              </div>
+              <div class="mt-3 flex items-center gap-2 text-xs">
+                <span class="px-2 py-1 rounded bg-green-50 text-green-800">✅ Fast Delivery</span>
+                <span class="px-2 py-1 rounded bg-blue-50 text-blue-800">🔁 Easy Replacement</span>
+                <span class="px-2 py-1 rounded bg-gray-100 text-gray-700">♻️ Eco Packaging</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Add a couple more placeholder cards -->
+          <article class="product-card bg-white rounded-lg shadow hover:shadow-xl transform hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="150">
+            <div class="relative overflow-hidden">
+              <img src="/assets/images/Portable Blender.webp" alt="product" class="w-full h-56 md:h-48 lg:h-56 object-contain object-center bg-white" />
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Portable Blender</h4>
+              <div class="flex items-center justify-between mt-2">
+                <div>
+                  <div class="text-teal-600 font-bold">₹1,099</div>
+                  <div class="text-xs text-gray-500">USB rechargeable</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <button class="quick-view-btn text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-50">Quick View</button>
+                  <button class="add-cart-btn bg-teal-600 text-white text-xs px-3 py-1 rounded-full">Add to cart</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card bg-white rounded-lg shadow hover:shadow-xl transform hover:-translate-y-1 transition" data-aos="fade-up" data-aos-delay="200">
+            <div class="relative overflow-hidden">
+              <img src="/assets/images/LED Desk Lamp.webp" alt="product" class="w-full h-56 md:h-48 lg:h-56 object-contain object-center bg-white" />
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">LED Desk Lamp</h4>
+              <div class="flex items-center justify-between mt-2">
+                <div>
+                  <div class="text-teal-600 font-bold">₹599</div>
+                  <div class="text-xs text-gray-500">Adjustable brightness</div>
+                </div>
+                <div class="flex flex-col items-end gap-2">
+                  <button class="quick-view-btn text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-50">Quick View</button>
+                  <button class="add-cart-btn bg-teal-600 text-white text-xs px-3 py-1 rounded-full">Add to cart</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Why Choose Us -->
+      <section class="bg-teal-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 class="text-2xl font-semibold mb-6" data-aos="fade-up">Why Choose KTD</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="p-6 bg-white rounded-lg shadow hover:scale-105 transform transition" data-aos="flip-up">
+              <div class="text-3xl">🚚</div>
+              <h4 class="font-semibold mt-3">Lightning-Fast Delivery</h4>
+              <p class="text-sm text-gray-500">Delivered within 48 hours in eligible areas.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-lg shadow hover:scale-105 transform transition" data-aos="flip-up" data-aos-delay="50">
+              <div class="text-3xl">♻️</div>
+              <h4 class="font-semibold mt-3">Eco-Friendly Packaging</h4>
+              <p class="text-sm text-gray-500">Recyclable and safe materials.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-lg shadow hover:scale-105 transform transition" data-aos="flip-up" data-aos-delay="100">
+              <div class="text-3xl">🔁</div>
+              <h4 class="font-semibold mt-3">Easy Replacements</h4>
+              <p class="text-sm text-gray-500">No-hassle replacements within 7 days.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-lg shadow hover:scale-105 transform transition" data-aos="flip-up" data-aos-delay="150">
+              <div class="text-3xl">🔒</div>
+              <h4 class="font-semibold mt-3">Safe & Secure</h4>
+              <p class="text-sm text-gray-500">Verified suppliers and secure checkout.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-lg shadow hover:scale-105 transform transition" data-aos="flip-up" data-aos-delay="200">
+              <div class="text-3xl">💬</div>
+              <h4 class="font-semibold mt-3">24/7 Support</h4>
+              <p class="text-sm text-gray-500">Customer-first approach and live chat.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h3 class="text-2xl font-semibold mb-6">What Customers Say</h3>
+        <div class="swiper-container testimonials" data-aos="fade-up">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide p-6 bg-white rounded-lg shadow">
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full" />
+                <div>
+                  <div class="font-semibold">Anjali K.</div>
+                  <div class="text-xs text-gray-500">5 ⭐️</div>
+                </div>
+              </div>
+              <p class="mt-4 text-gray-600">"My order arrived in 2 days — amazing packaging and the pillow is super comfy!"</p>
+            </div>
+
+            <div class="swiper-slide p-6 bg-white rounded-lg shadow">
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full" />
+                <div>
+                  <div class="font-semibold">Rahul S.</div>
+                  <div class="text-xs text-gray-500">4.5 ⭐️</div>
+                </div>
+              </div>
+              <p class="mt-4 text-gray-600">"Great replacements process when the first camera had a defect — quick and simple."</p>
+            </div>
+
+            <div class="swiper-slide p-6 bg-white rounded-lg shadow">
+              <div class="flex items-center gap-4">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full" />
+                <div>
+                  <div class="font-semibold">Priya M.</div>
+                  <div class="text-xs text-gray-500">5 ⭐️</div>
+                </div>
+              </div>
+              <p class="mt-4 text-gray-600">"Loved the eco-packaging — felt good about my purchase."</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Delivery & Replacement Promise -->
+      <section id="delivery" class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 class="text-2xl font-semibold mb-6">Delivery & Replacement Promise</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 bg-teal-50 rounded-lg">
+              <div class="text-3xl">⏱️</div>
+              <h4 class="font-semibold mt-3">Delivered within 48 hours</h4>
+              <p class="text-sm text-gray-600">Eligible areas, fast logistics partners, real-time tracking.</p>
+            </div>
+
+            <div class="p-6 bg-teal-50 rounded-lg">
+              <div class="text-3xl">📦</div>
+              <h4 class="font-semibold mt-3">Eco-safe packaging</h4>
+              <p class="text-sm text-gray-600">Recyclable and protective packaging for every order.</p>
+            </div>
+
+            <div class="p-6 bg-teal-50 rounded-lg">
+              <div class="text-3xl">🔁</div>
+              <h4 class="font-semibold mt-3">No-hassle replacement</h4>
+              <p class="text-sm text-gray-600">7-day replacement policy with easy pickups.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="bg-teal-600 text-white py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 class="text-2xl font-semibold">Join our newsletter</h3>
+          <p class="mt-2">Get ₹500 off your first order — exclusive deals, early drops, and more.</p>
+          <form id="newsletterForm" class="mt-6 flex items-center justify-center gap-3">
+            <input id="newsletterEmail" type="email" placeholder="Enter your email" required class="px-4 py-2 rounded-md text-gray-800 w-64" />
+            <button class="px-4 py-2 bg-white text-teal-600 rounded-md font-semibold hover:brightness-95 transition">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-200 py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-md bg-teal-500 flex items-center justify-center text-white font-bold">KTD</div>
+              <div>
+                <div class="font-semibold">KTD Dropshipping</div>
+                <div class="text-xs text-gray-400">Fast. Safe. Eco-Friendly.</div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-400">Contact: deepakgowrishankar7@gmail.com | tensing2619@gmail.com | +91 8919228549 | +91 9908374885</p>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-2">Company</h4>
+            <ul class="text-sm text-gray-400 space-y-1">
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Refund Policy</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold mb-2">Follow us</h4>
+            <div class="flex items-center gap-3 text-gray-400">
+              <a href="#">Twitter</a>
+              <a href="#">Facebook</a>
+              <a href="#">Instagram</a>
+            </div>
+            <div class="mt-4 text-xs text-gray-500">SSL Secure • Verified Seller</div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center text-xs text-gray-500">© 2025 KTD Dropshipping — All rights reserved</div>
+      </div>
+    </footer>
+
+    <!-- Quick view modal -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+      <div class="bg-white rounded-lg max-w-2xl w-full overflow-hidden">
+        <div class="p-4 flex items-center justify-between">
+          <h4 id="qv-title" class="font-semibold">Product title</h4>
+          <button id="qvClose" class="text-gray-600">Close</button>
+        </div>
+        <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <img id="qv-img" src="" class="w-full h-64 object-cover rounded" />
+          <div>
+            <div id="qv-price" class="text-teal-600 font-bold text-lg">₹0</div>
+            <p id="qv-desc" class="text-sm text-gray-600 mt-2">Description</p>
+            <div class="mt-4 flex gap-2">
+              <button id="qvAdd" class="bg-teal-600 text-white px-4 py-2 rounded">Add to cart</button>
+              <button id="qvBuy" class="border px-4 py-2 rounded">Buy now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

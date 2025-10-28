@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Search results — KTD Dropshipping</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-white font-inter">
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Search results — KTD Dropshipping</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+      <body class="bg-white font-inter">
+        <header class="bg-white shadow-sm">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 text-teal-600 font-semibold">KTD Dropshipping</a>
+            <div class="flex items-center gap-3">
+              <a href="index.html" class="text-sm text-gray-600 hover:underline">Home</a>
+              <a href="cart.html" class="text-sm text-gray-600 hover:underline">Cart</a>
+            </div>
+          </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h1 id="resultsTitle" class="text-2xl font-semibold mb-6">Search results</h1>
+          <div id="resultsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- product cards injected here -->
+          </div>
+          <div id="noResults" class="text-center text-gray-500 py-12 hidden">No results found. Try a different query.</div>
+        </main>
+
+        <script>
+          // simple product dataset (demo)
+          const PRODUCTS = [
+            // laptops
+            {id:'lap1', title:'Dell Inspiron 15 5510', brand:'Dell', price:'₹54,999', img:'/assets/images/Dell Inspiron 15 5510.webp', type:'laptop'},
+            {id:'lap2', title:'HP Pavilion 14', brand:'HP', price:'₹42,499', img:'/assets/images/HP Pavilion 14.webp', type:'laptop'},
+            {id:'lap3', title:'Apple MacBook Air M2', brand:'Apple', price:'₹114,900', img:'/assets/images/Apple MacBook Air M2.webp', type:'laptop'},
+            {id:'lap4', title:'Lenovo ThinkPad X1 Carbon', brand:'Lenovo', price:'₹129,999', img:'/assets/images/Lenovo ThinkPad X1 Carbon.webp', type:'laptop'},
+            {id:'lap5', title:'Asus ZenBook 14', brand:'Asus', price:'₹74,999', img:'/assets/images/Asus ZenBook 14.webp', type:'laptop'},
+            {id:'lap6', title:'Acer Swift 3', brand:'Acer', price:'₹49,999', img:'/assets/images/Acer Swift 3.webp', type:'laptop'},
+            {id:'lap7', title:'Microsoft Surface Laptop 4', brand:'Microsoft', price:'₹99,999', img:'/assets/images/Microsoft Surface Laptop 4.webp', type:'laptop'},
+            {id:'lap8', title:'Razer Blade 15', brand:'Razer', price:'₹169,999', img:'/assets/images/Razer Blade 15.webp', type:'laptop'},
+            // mobiles / smartphones
+            {id:'mob1', title:'Samsung Galaxy S23', brand:'Samsung', price:'₹54,999', img:'/assets/images/Samsung Galaxy S23.webp', type:'mobile'},
+            {id:'mob2', title:'Apple iPhone 14', brand:'Apple', price:'₹79,999', img:'/assets/images/Apple iPhone 14.webp', type:'mobile'},
+            {id:'mob3', title:'OnePlus 11', brand:'OnePlus', price:'₹49,999', img:'/assets/images/OnePlus 11.webp', type:'mobile'},
+            {id:'mob4', title:'Xiaomi Redmi Note 12', brand:'Xiaomi', price:'₹12,999', img:'/assets/images/Xiaomi Redmi Note 12.webp', type:'mobile'},
+            {id:'mob5', title:'Realme Narzo 50', brand:'Realme', price:'₹10,499', img:'/assets/images/Realme Narzo 50.webp', type:'mobile'},
+            {id:'mob6', title:'Google Pixel 7', brand:'Google', price:'₹59,999', img:'/assets/images/Google Pixel 7.webp', type:'mobile'},
+            // tablets
+            {id:'tab1', title:'Apple iPad Air', brand:'Apple', price:'₹54,900', img:'/assets/images/Apple iPad Air.webp', type:'tablet'},
+            {id:'tab2', title:'Samsung Galaxy Tab S8', brand:'Samsung', price:'₹59,999', img:'/assets/images/Samsung Galaxy Tab S8.webp', type:'tablet'},
+            // accessories & others
+            {id:'cam1', title:'Smart Home Camera', brand:'KTD', price:'₹1,199', img:'assets/images/smart home camera.webp', type:'camera'},
+            {id:'head1', title:'Comfy Wireless Headphones', brand:'KTD', price:'₹2,499', img:'assets/images/wirelessheadphones.webp', type:'audio'},
+            {id:'blend1', title:'Portable Blender', brand:'KTD', price:'₹1,099', img:'assets/images/Portable Blender.webp', type:'kitchen'},
+            {id:'lamp1', title:'LED Desk Lamp', brand:'KTD', price:'₹599', img:'assets/images/LED Desk Lamp.webp', type:'home'}
+          ];
+
+          function getQuery(){
+            const params = new URLSearchParams(window.location.search);
+            return (params.get('q') || '').trim();
+          }
+
+          // renderResults with alias + fuzzy fallback
+          function renderResults(q){
+            const grid = document.getElementById('resultsGrid');
+            const title = document.getElementById('resultsTitle');
+            const noRes = document.getElementById('noResults');
+
+            grid.innerHTML = '';
+
+            if(!q){
+              title.textContent = 'Please enter a search query';
+              noRes.classList.add('hidden');
+              return;
+            }
+
+            const normalize = s => (s || '').toString().toLowerCase().trim();
+            const ALIASES = { 'lptop':'laptop','lptops':'laptop','lapto':'laptop','mobiles':'mobile','iphne':'iphone','iphon':'iphone' };
+            function levenshtein(a,b){ a=a||''; b=b||''; if(a===b) return 0; const m=a.length,n=b.length; if(m===0) return n; if(n===0) return m; const dp=Array.from({length:m+1},()=>new Array(n+1).fill(0)); for(let i=0;i<=m;i++)dp[i][0]=i; for(let j=0;j<=n;j++)dp[0][j]=j; for(let i=1;i<=m;i++){ for(let j=1;j<=n;j++){ const cost=a[i-1]===b[j-1]?0:1; dp[i][j]=Math.min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+cost); } } return dp[m][n]; }
+
+            const originalQuery = q;
+            let ql = normalize(q);
+            if(ALIASES[ql]) ql = ALIASES[ql];
+
+            function searchWithQuery(qstr){
+              if(qstr === 'all') return PRODUCTS.slice();
+              return PRODUCTS.filter(p=>{ const t=normalize(p.title), b=normalize(p.brand), ty=normalize(p.type); if(t.includes(qstr)||b.includes(qstr)) return true; if(ty===qstr) return true; if((qstr==='mobile'||qstr==='phone')&&ty==='mobile') return true; if(qstr==='electronics' && ['laptop','mobile','tablet','camera','audio'].includes(ty)) return true; if(qstr==='home' && ['home','kitchen'].includes(ty)) return true; return false; });
+            }
+
+            let results = (ql === 'all') ? PRODUCTS.slice() : searchWithQuery(ql);
+
+            if((!results || results.length === 0) && ql !== 'all'){
+              const candidates = new Set(); PRODUCTS.forEach(p=>{ candidates.add(normalize(p.type)); candidates.add(normalize(p.brand)); candidates.add(normalize(p.title)); });
+              const candArr = Array.from(candidates).filter(Boolean); let best=null, bestScore=Infinity; for(const c of candArr){ const score = levenshtein(ql,c); if(score < bestScore){ bestScore = score; best = c; } }
+              if(best && (bestScore <= 2 || bestScore / Math.max(ql.length, best.length) < 0.35)){ title.textContent = `Showing results for "${best}" (from "${originalQuery}")`; results = searchWithQuery(best); }
+            }
+
+            if(!results || results.length === 0){ title.textContent = `Results for "${originalQuery}"`; noRes.classList.remove('hidden'); return; }
+            noRes.classList.add('hidden'); if(!title.textContent.includes('Showing results for')) title.textContent = (ql === 'all') ? 'All Products' : `Results for "${originalQuery}"`;
+
+            results.forEach(p=>{
+              const card = document.createElement('article');
+              card.className = 'product-card bg-white rounded-lg shadow hover:shadow-xl transform hover:-translate-y-1 transition';
+              card.innerHTML = `
+                <div class="relative overflow-hidden">
+                  <img src="${p.img}" alt="${p.title}" class="w-full h-56 md:h-48 lg:h-56 object-contain object-center bg-white" />
+                </div>
+                <div class="p-4">
+                  <h4 class="font-semibold">${p.title}</h4>
+                  <div class="flex items-center justify-between mt-2">
+                    <div>
+                      <div class="text-teal-600 font-bold">${p.price}</div>
+                      <div class="text-xs text-gray-500">${p.brand}</div>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                      <button class="quick-view-btn text-xs px-3 py-1 rounded-full border border-gray-200 hover:bg-gray-50">Quick View</button>
+                      <button data-id="${p.id}" class="add-cart-btn bg-teal-600 text-white text-xs px-3 py-1 rounded-full hover:bg-teal-700">Add to cart</button>
+                    </div>
+                  </div>
+                </div>
+              `;
+              grid.appendChild(card);
+            });
+
+            document.querySelectorAll('.quick-view-btn').forEach(btn=>{ btn.addEventListener('click', ()=>{ const card = btn.closest('.product-card'); if(!card) return; const img = card.querySelector('img')?.src || ''; const titleText = card.querySelector('h4')?.textContent || ''; const price = card.querySelector('.text-teal-600')?.textContent || ''; const qv = document.getElementById('quickViewModal'); if(qv){ qv.querySelector('#qv-img') && (qv.querySelector('#qv-img').src = img); qv.querySelector('#qv-title') && (qv.querySelector('#qv-title').textContent = titleText); qv.querySelector('#qv-price') && (qv.querySelector('#qv-price').textContent = price); qv.classList.add('modal-open'); } }); });
+
+            document.querySelectorAll('.add-cart-btn').forEach(btn=>{ btn.addEventListener('click', ()=>{ const id = btn.getAttribute('data-id'); addToCart(id); }); });
+          }
+
+          function addToCart(id){ const product = PRODUCTS.find(p=>p.id === id); if(!product) return; let cart = []; try{ cart = JSON.parse(localStorage.getItem('ktd_cart') || '[]'); }catch(e){ cart = []; } const item = { id: product.id, title: product.title, price: product.price, img: product.img, qty: 1 }; cart.push(item); localStorage.setItem('ktd_cart', JSON.stringify(cart)); const cartCount = document.getElementById('cartCount'); if(cartCount) cartCount.textContent = cart.length; const t = document.createElement('div'); t.className='toast'; t.textContent='Added to cart'; document.body.appendChild(t); setTimeout(()=> t.remove(),1500); }
+
+          (function(){ const q = getQuery(); renderResults(q || 'all'); })();
+        </script>
+
+        <script src="assets/js/main.js"></script>
+      </body>
+    </html>
